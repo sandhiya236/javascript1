@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rock Paper Scissors</title>
+
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+  <form id="rps-form">
+    <label>
+      <input type="radio" name="choice" value="1"> Rock
+    </label>
+    <label>
+      <input type="radio" name="choice" value="2"> Paper
+    </label>
+    <label>
+      <input type="radio" name="choice" value="3"> Scissors
+    </label>
+    <br><br>
+    <button type="button" onclick="playGame()">Play</button>
+  </form>
+  <div class="result" id="result"></div>
+
+  <script>
+  	
+    function playGame() {
+      console.log("playGame");
+      const form = document.getElementById('rps-form');
+      console.log(form);
+      const choice = form.elements['choice'].value;
+
+
+      let computerChoice = Math.floor(Math.random() *3+1);
+      console.log(`computerChoice ${computerChoice}`);
+
+		     let resultMessage = `You chose ${choice}, Computer chose ${computerChoice}. `;
+		     console.log(`resultMessage ${resultMessage}`);
+             console.log((choice == 1 && computerChoice == 3));
+             console.log((choice == 2 && computerChoice == 1));
+             console.log((choice == 3 && computerChoice == 2));
+      if (choice == computerChoice) {
+      	 console.log(`Tie ${computerChoice}`);
+        resultMessage += "It's a tie!";
+      } else if (
+        (choice == 1 && computerChoice == 3) ||
+        (choice == 2 && computerChoice == 1) ||
+        (choice == 3 && computerChoice == 2)
+      ) {
+        resultMessage += "You win!";
+      } else {
+        resultMessage += "Computer wins";
+    }
+     document.getElementById('result').innerText = resultMessage;
+    console.log(resultMessage)
+
+
+		}
+  </script>
+</body>
+
+</html>

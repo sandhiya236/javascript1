@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> update</title>
+</head>
+<body>
+ <input id="inputbox" onkeyup="update()">
+ <h1 id="result"></h1>
+ <script>
+ 	 var inputbox=document.getElementById("inputbox");
+ 	 var result=document.getElementById("result");
+ 	 function update()
+ 	 {
+ 	 	result.textContent=inputbox.value
+ 	 }
+ </script>
+
+</body>
+</html>

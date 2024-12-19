@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <form id="rps-form">
+    <label>
+      <input type="radio" name="choice" value="rock"> Rock
+    </label>
+    <label>
+      <input type="radio" name="choice" value="paper"> Paper
+    </label>
+    <label>
+      <input type="radio" name="choice" value="scissors"> Scissors
+    </label>
+    <br><br>
+    <button type="button" onclick="playGame()">Play</button>
+  </form>
+  <div class="result" id="result"></div>
+
+  <script>
+    function playGame() {
+      
+      const form = document.getElementById('rps-form');
+      const choice = form.elements['choice'].value;
+
+      if (!choice) {
+        document.getElementById('result').innerText = 'Please select an option!';
+        return;
+      }
+
+      
+      const options = ['rock', 'paper', 'scissors'];
+      const computerChoice = options[Math.floor(Math.random() * options.length)];
+
+      
+      let resultMessage = `You chose ${choice}, Computer chose ${computerChoice}. `;
+      if (choice === computerChoice) {
+        resultMessage += "It's a tie!";
+      } else if (
+        (choice === 'rock' && computerChoice === 'scissors') ||
+        (choice === 'paper' && computerChoice === 'rock') ||
+        (choice === 'scissors' && computerChoice === 'paper')
+      ) {
+        resultMessage += "You win!";
+      } else {
+        resultMessage += "Computer wins!";
+      }
+
+      
+      document.getElementById('result').innerText = resultMessage;
+    }
+  </script>
+</body>
+</html>
